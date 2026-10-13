@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e9">
+  <meta name="description" content="Sriram's home for Tamil literature, poems, stories and reflections.">
+  <title>Sriram Writes — தமிழ் இலக்கியம்</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="works.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Sriram Writes home">
+      <span class="brand-mark" aria-hidden="true">ஸ்ரீ</span>
+      <span><strong>Sriram Writes</strong><small>தமிழ் · எழுத்தும் எண்ணமும்</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#works">படைப்புகள்</a>
+      <a href="#about">என்னைப் பற்றி</a>
+      <a class="nav-contact" href="mailto:hello@sriramwrites.in">தொடர்பு ↗</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> ஒரு தனிப்பட்ட இலக்கியக் கூடம்</p>
+        <h1>சொற்களில்<br><em>சிறு உலகங்கள்.</em></h1>
+        <p class="hero-description">கவிதைகள், கதைகள், கட்டுரைகள்—தமிழில் நான் எழுதும் எண்ணங்களுக்கும் அனுபவங்களுக்கும் ஒரு வீடு.</p>
+        <a class="button" href="#works">படைப்புகளை வாசிக்க <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-label="A quiet reading nook illustration" role="img">
+        <div class="sun"></div><div class="arch"></div>
+        <div class="leaf leaf-one"></div><div class="leaf leaf-two"></div><div class="leaf leaf-three"></div>
+        <div class="book book-back"></div><div class="book book-front"><span>தமிழ்</span></div>
+        <div class="art-caption">வாசிப்பும் எழுத்தும்<br><small>ஒரே பயணத்தின் இரு கரைகள்</small></div>
+      </div>
+      <div class="hero-index" aria-hidden="true">01 <span></span> 03</div>
+    </section>
+
+    <section class="works section-wrap" id="works">
+      <div class="section-heading">
+        <div><p class="eyebrow">எழுத்துகளின் தொகுப்பு</p><h2>படைப்புகள்</h2></div>
+        <p class="section-note">வாசிக்க ஒரு வரி போதும்.<br>தங்க ஒரு உணர்வு போதும்.</p>
+      </div>
+      <div class="work-tools">
+        <div class="filters" role="group" aria-label="Filter works by type">
+          <button class="filter active" data-filter="all" type="button">அனைத்தும்</button>
+          <button class="filter" data-filter="கவிதை" type="button">கவிதை</button>
+          <button class="filter" data-filter="கதை" type="button">கதை</button>
+          <button class="filter" data-filter="கட்டுரை" type="button">கட்டுரை</button>
+        </div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="தேடுங்கள்" aria-label="Search works"></label>
+      </div>
+      <div id="work-list" class="work-list" aria-live="polite"></div>
+      <p class="editor-note">உங்கள் படைப்புகளைச் சேர்க்க, <code>works.js</code> கோப்பில் உள்ள பட்டியலைத் திருத்துங்கள்.</p>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-symbol" aria-hidden="true">“</div>
+      <div class="about-copy"><p class="eyebrow">எழுத்தாளரைப் பற்றி</p><h2>வணக்கம்,<br>நான் ஸ்ரீராம்.</h2><p>தமிழ் மொழியையும் அதன் கதைகளையும் நேசிக்கும் ஒரு வாசகன், எழுத்தாளன். இந்தத் தளத்தில் என் படைப்புகளையும், மனதில் தங்கும் சில எண்ணங்களையும் பகிர்கிறேன்.</p><p class="about-hint">இந்த அறிமுகத்தை உங்கள் சொற்களில் மாற்றுங்கள்.</p></div>
+      <div class="about-side"><span>எழுதுவது என்பது</span><span>உலகைக் கவனிப்பது.</span><span class="about-dot">✳</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="footer-brand" href="#top">Sriram Writes <span>© <span id="year"></span></span></a><p>தமிழுக்காகவும், கதைகளுக்காகவும்.</p><a href="#top">மீண்டும் மேலே ↑</a></footer>
+</body>
+</html>
