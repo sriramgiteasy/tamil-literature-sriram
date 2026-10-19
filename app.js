@@ -32,3 +32,33 @@ filters.forEach((button) => button.addEventListener("click", () => {
 search.addEventListener("input", renderWorks);
 document.querySelector("#year").textContent = new Date().getFullYear();
 renderWorks();
+
+const menuToggle = document.querySelector(".menu-toggle");
+const primaryNav = document.querySelector("#primary-nav");
+
+function closeMenu() {
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "வழிசெலுத்தலைத் திறக்கவும்");
+  primaryNav.classList.remove("is-open");
+}
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", String(!isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "வழிசெலுத்தலைத் திறக்கவும்" : "வழிசெலுத்தலை மூடவும்");
+  primaryNav.classList.toggle("is-open", !isOpen);
+});
+
+primaryNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMenu();
+});
+
+document.querySelectorAll("[data-quick-filter]").forEach((card) => {
+  card.addEventListener("click", () => {
+    const filter = filters.find((button) => button.dataset.filter === card.dataset.quickFilter);
+    if (!filter) return;
+    filter.click();
+    document.querySelector("#works").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});

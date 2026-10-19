@@ -20,7 +20,11 @@
       <span class="brand-mark" aria-hidden="true">ஸ்ரீ</span>
       <span><strong>Sriram Writes</strong><small>தமிழ் · எழுத்தும் எண்ணமும்</small></span>
     </a>
-    <nav aria-label="Main navigation">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="வழிசெலுத்தலைத் திறக்கவும்">
+      <span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primary-nav" aria-label="முதன்மை வழிசெலுத்தல்">
+      <a href="#top">முகப்பு</a>
       <a href="#works">படைப்புகள்</a>
       <a href="#about">என்னைப் பற்றி</a>
       <a class="nav-contact" href="mailto:hello@sriramwrites.in">தொடர்பு ↗</a>
@@ -33,7 +37,11 @@
         <p class="eyebrow"><span></span> ஒரு தனிப்பட்ட இலக்கியக் கூடம்</p>
         <h1>சொற்களில்<br><em>சிறு உலகங்கள்.</em></h1>
         <p class="hero-description">கவிதைகள், கதைகள், கட்டுரைகள்—தமிழில் நான் எழுதும் எண்ணங்களுக்கும் அனுபவங்களுக்கும் ஒரு வீடு.</p>
-        <a class="button" href="#works">படைப்புகளை வாசிக்க <span aria-hidden="true">↓</span></a>
+        <div class="hero-actions">
+          <a class="button" href="#works">படைப்புகளை வாசிக்க <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#about">எழுத்தாளரை அறிய <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hero-signature">வாசிப்புக்கும் நினைவுகளுக்கும் ஒரு சிறிய இடம்.</p>
       </div>
       <div class="hero-art">
         <img src="assets/writer-at-work.png" alt="A writer working at a desk in a book-filled study">
@@ -41,6 +49,29 @@
       <div class="hero-index" aria-hidden="true">01 <span></span> 03</div>
     </section>
 
+    <section class="discover section-wrap" aria-labelledby="discover-title">
+      <div class="discover-heading">
+        <p class="eyebrow">எதை வாசிக்க விரும்புகிறீர்கள்?</p>
+        <h2 id="discover-title">உங்கள் வாசிப்பைத் தேர்ந்தெடுங்கள்</h2>
+      </div>
+      <div class="category-grid">
+        <button class="category-card" type="button" data-quick-filter="கவிதை">
+          <span class="category-icon" aria-hidden="true">கு</span>
+          <span class="category-copy"><strong>கவிதைகள்</strong><small>சொற்களில் தங்கும் உணர்வுகள்</small></span>
+          <span class="category-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="category-card" type="button" data-quick-filter="கதை">
+          <span class="category-icon" aria-hidden="true">க</span>
+          <span class="category-copy"><strong>கதைகள்</strong><small>வாழ்விலிருந்து பிறக்கும் தருணங்கள்</small></span>
+          <span class="category-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="category-card" type="button" data-quick-filter="கட்டுரை">
+          <span class="category-icon" aria-hidden="true">எ</span>
+          <span class="category-copy"><strong>கட்டுரைகள்</strong><small>எண்ணங்களும் அனுபவங்களும்</small></span>
+          <span class="category-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </section>
     <section class="works section-wrap" id="works">
       <div class="section-heading">
         <div><p class="eyebrow">எழுத்துகளின் தொகுப்பு</p><h2>படைப்புகள்</h2></div>
