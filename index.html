@@ -3,100 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f2e9">
-  <meta name="description" content="Sriram's home for Tamil literature, poems, stories and reflections.">
+  <meta name="theme-color" content="#1b2340">
+  <meta name="description" content="ஸ்ரீராமின் தமிழ் இலக்கியத் தளம் — கவிதைகள், கதைகள், கட்டுரைகள்.">
   <title>Sriram Writes — தமிழ் இலக்கியம்</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300..800&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="works.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Sriram Writes home">
-      <span class="brand-mark" aria-hidden="true">ஸ்ரீ</span>
-      <span><strong>Sriram Writes</strong><small>தமிழ் · எழுத்தும் எண்ணமும்</small></span>
-    </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="வழிசெலுத்தலைத் திறக்கவும்">
-      <span></span><span></span>
-    </button>
-    <nav class="primary-nav" id="primary-nav" aria-label="முதன்மை வழிசெலுத்தல்">
-      <a href="#top">முகப்பு</a>
-      <a href="#works">படைப்புகள்</a>
-      <a href="#about">என்னைப் பற்றி</a>
-      <a class="nav-contact" href="mailto:hello@sriramwrites.in">தொடர்பு ↗</a>
-    </nav>
+  <a class="skip-link" href="#main">உள்ளடக்கத்துக்குச் செல்</a>
+  <div class="read-progress" id="read-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#/" aria-label="Sriram Writes – முகப்பு">
+        <span class="brand-mark" aria-hidden="true">ஸ்ரீ</span>
+        <span class="brand-text"><strong>Sriram Writes</strong><small>எழுத்தும் எண்ணமும்</small></span>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="முதன்மை வழிசெலுத்தல்">
+        <a href="#/" data-route="home">முகப்பு</a>
+        <div class="nav-group">
+          <a href="#/works" data-route="works">படைப்புகள்</a>
+          <div class="nav-panel">
+            <a href="#/works/கவிதை"><strong>கவிதைகள்</strong><small>சொற்களில் தங்கும் உணர்வுகள்</small></a>
+            <a href="#/works/கதை"><strong>கதைகள்</strong><small>வாழ்விலிருந்து பிறக்கும் தருணங்கள்</small></a>
+            <a href="#/works/கட்டுரை"><strong>கட்டுரைகள்</strong><small>எண்ணங்களும் அனுபவங்களும்</small></a>
+          </div>
+        </div>
+        <a href="#/about" data-route="about">எழுத்தாளர்</a>
+        <a href="mailto:hello@sriramwrites.in" class="nav-contact">தொடர்பு</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="icon-btn" type="button" id="open-search" aria-label="தேடு (/ விசை)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+        <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="பட்டியலைத் திற">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> ஒரு தனிப்பட்ட இலக்கியக் கூடம்</p>
-        <h1>சொற்களில்<br><em>சிறு உலகங்கள்.</em></h1>
-        <p class="hero-description">கவிதைகள், கதைகள், கட்டுரைகள்—தமிழில் நான் எழுதும் எண்ணங்களுக்கும் அனுபவங்களுக்கும் ஒரு வீடு.</p>
-        <div class="hero-actions">
-          <a class="button" href="#works">படைப்புகளை வாசிக்க <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="#about">எழுத்தாளரை அறிய <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="hero-signature">வாசிப்புக்கும் நினைவுகளுக்கும் ஒரு சிறிய இடம்.</p>
-      </div>
-      <div class="hero-art">
-        <img src="assets/writer-at-work.png" alt="A writer working at a desk in a book-filled study">
-      </div>
-      <div class="hero-index" aria-hidden="true">01 <span></span> 03</div>
-    </section>
+  <main id="main" tabindex="-1"></main>
 
-    <section class="discover section-wrap" aria-labelledby="discover-title">
-      <div class="discover-heading">
-        <p class="eyebrow">எதை வாசிக்க விரும்புகிறீர்கள்?</p>
-        <h2 id="discover-title">உங்கள் வாசிப்பைத் தேர்ந்தெடுங்கள்</h2>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand brand-light" href="#/"><span class="brand-mark" aria-hidden="true">ஸ்ரீ</span><span class="brand-text"><strong>Sriram Writes</strong><small>தமிழுக்காகவும், கதைகளுக்காகவும்.</small></span></a>
       </div>
-      <div class="category-grid">
-        <button class="category-card" type="button" data-quick-filter="கவிதை">
-          <span class="category-icon" aria-hidden="true">கு</span>
-          <span class="category-copy"><strong>கவிதைகள்</strong><small>சொற்களில் தங்கும் உணர்வுகள்</small></span>
-          <span class="category-arrow" aria-hidden="true">↗</span>
-        </button>
-        <button class="category-card" type="button" data-quick-filter="கதை">
-          <span class="category-icon" aria-hidden="true">க</span>
-          <span class="category-copy"><strong>கதைகள்</strong><small>வாழ்விலிருந்து பிறக்கும் தருணங்கள்</small></span>
-          <span class="category-arrow" aria-hidden="true">↗</span>
-        </button>
-        <button class="category-card" type="button" data-quick-filter="கட்டுரை">
-          <span class="category-icon" aria-hidden="true">எ</span>
-          <span class="category-copy"><strong>கட்டுரைகள்</strong><small>எண்ணங்களும் அனுபவங்களும்</small></span>
-          <span class="category-arrow" aria-hidden="true">↗</span>
-        </button>
-      </div>
-    </section>
-    <section class="works section-wrap" id="works">
-      <div class="section-heading">
-        <div><p class="eyebrow">எழுத்துகளின் தொகுப்பு</p><h2>படைப்புகள்</h2></div>
-        <p class="section-note">வாசிக்க ஒரு வரி போதும்.<br>தங்க ஒரு உணர்வு போதும்.</p>
-      </div>
-      <div class="work-tools">
-        <div class="filters" role="group" aria-label="Filter works by type">
-          <button class="filter active" data-filter="all" type="button">அனைத்தும்</button>
-          <button class="filter" data-filter="கவிதை" type="button">கவிதை</button>
-          <button class="filter" data-filter="கதை" type="button">கதை</button>
-          <button class="filter" data-filter="கட்டுரை" type="button">கட்டுரை</button>
-        </div>
-        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="தேடுங்கள்" aria-label="Search works"></label>
-      </div>
-      <div id="work-list" class="work-list" aria-live="polite"></div>
-      <p class="editor-note">உங்கள் படைப்புகளைச் சேர்க்க, <code>works.js</code> கோப்பில் உள்ள பட்டியலைத் திருத்துங்கள்.</p>
-    </section>
+      <nav aria-label="அடிக்குறிப்பு வழிசெலுத்தல்" class="footer-links">
+        <h2>படிக்க</h2>
+        <a href="#/works/கவிதை">கவிதைகள்</a>
+        <a href="#/works/கதை">கதைகள்</a>
+        <a href="#/works/கட்டுரை">கட்டுரைகள்</a>
+      </nav>
+      <nav aria-label="தளம்" class="footer-links">
+        <h2>தளம்</h2>
+        <a href="#/">முகப்பு</a>
+        <a href="#/works">அனைத்துப் படைப்புகள்</a>
+        <a href="#/about">எழுத்தாளர்</a>
+        <a href="mailto:hello@sriramwrites.in">hello@sriramwrites.in</a>
+      </nav>
+    </div>
+    <div class="footer-base"><span>© <span id="year"></span> Sriram Writes</span><a href="#top" id="to-top">மேலே செல்</a></div>
+  </footer>
 
-    <section class="about" id="about">
-      <div class="about-symbol" aria-hidden="true">“</div>
-      <div class="about-copy"><p class="eyebrow">எழுத்தாளரைப் பற்றி</p><h2>வணக்கம்,<br>நான் ஸ்ரீராம்.</h2><p>தமிழ் மொழியையும் அதன் கதைகளையும் நேசிக்கும் ஒரு வாசகன், எழுத்தாளன். இந்தத் தளத்தில் என் படைப்புகளையும், மனதில் தங்கும் சில எண்ணங்களையும் பகிர்கிறேன்.</p><p class="about-hint">இந்த அறிமுகத்தை உங்கள் சொற்களில் மாற்றுங்கள்.</p></div>
-      <div class="about-side"><span>எழுதுவது என்பது</span><span>உலகைக் கவனிப்பது.</span><span class="about-dot">✳</span></div>
-    </section>
-  </main>
-
-  <footer class="site-footer"><a class="footer-brand" href="#top">Sriram Writes <span>© <span id="year"></span></span></a><p>தமிழுக்காகவும், கதைகளுக்காகவும்.</p><a href="#top">மீண்டும் மேலே ↑</a></footer>
+  <dialog class="search-dialog" id="search-dialog" aria-label="படைப்புகளில் தேடு">
+    <form method="dialog" class="search-head" id="search-form">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+      <input id="search-input" type="search" placeholder="தலைப்பு, சொல் அல்லது வரியைத் தேடுங்கள்" autocomplete="off" aria-label="தேடல் சொல்">
+      <button type="button" class="search-close" id="close-search" aria-label="மூடு">Esc</button>
+    </form>
+    <div class="search-results" id="search-results" aria-live="polite"></div>
+  </dialog>
 </body>
 </html>

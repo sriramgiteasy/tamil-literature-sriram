@@ -18,11 +18,11 @@ const works = [
 ];
 ```
 
-Supported types are `கவிதை`, `கதை`, and `கட்டுரை`. Save the file and refresh the page to see changes. Replace the introduction in `index.html` with your own biography. Update the contact email there before publishing.
+Supported types are `கவிதை`, `கதை`, and `கட்டுரை`. Save the file and refresh the page to see changes. Each work gets its own reading page automatically (`#/read/<number>`, numbered in the order of the array). New works appear on the home page, the works list, the category counts and search without any other change. Edit the biography in the `viewAbout` and home-page sections of `app.js`, and update the contact email (`EMAIL` in `app.js`, plus the links in `index.html`) before publishing.
 
 ## Preview locally
 
-Open `index.html` in a browser. The site uses Google Fonts when internet access is available and falls back to system fonts if it isn't.
+Open `index.html` in a browser (the site uses hash routes, so no server setup is needed). The site uses Google Fonts when internet access is available and falls back to system fonts if it isn't.
 
 ## Publish with Azure Static Web Apps
 
