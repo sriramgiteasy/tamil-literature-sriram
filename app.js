@@ -144,7 +144,7 @@ function renderBody(w) {
       else if (cur.length) { stanzas.push(cur); cur = []; }
     });
     if (cur.length) stanzas.push(cur);
-    return `<div class="poem">${stanzas.map((s) => `<p>${s.map(esc).join("<br>")}</p>`).join("")}</div>`;
+    return `<div class="poem">${stanzas.map((s) => `<p>${s.map((l) => `<span class="line">${esc(l)}</span>`).join("")}</p>`).join("")}</div>`;
   }
   return lines
     .map((l) => l.trim())

@@ -11,11 +11,40 @@
   --text: #1c2033;
   --muted: #565b72;
   --on-ink: #eef0e3;
+  --surface: #fbfcf5;
+  --heading: var(--ink);
+  --header-bg: rgba(238, 240, 227, .92);
+  --leaf-light: #ebe7bd;
+  --leaf-dark: #ddd9a4;
+  --leaf-grain: rgba(120, 104, 40, .07);
+  --leaf-shine: rgba(255, 255, 255, .6);
+  color-scheme: light;
   --head: "Anek Tamil", "Noto Sans Tamil", system-ui, sans-serif;
   --read: "Noto Serif Tamil", "Latha", serif;
   --gutter: clamp(18px, 5vw, 64px);
   --max: 1120px;
   --header-h: 72px;
+}
+
+/* Night reading: follows the reader's phone or computer setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --wash: #121628;
+    --wash-2: #242a44;
+    --leaf: #34311f;
+    --leaf-edge: #5a5538;
+    --teal: #6cc2b9;
+    --text: #e6e8da;
+    --muted: #a4a9c0;
+    --surface: #1a1f35;
+    --heading: #f0e6c4;
+    --header-bg: rgba(18, 22, 40, .9);
+    --leaf-light: #3a3723;
+    --leaf-dark: #2c2a1a;
+    --leaf-grain: rgba(240, 220, 150, .04);
+    --leaf-shine: rgba(255, 255, 255, .05);
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -34,7 +63,7 @@ main { outline: none; min-height: 60vh; }
 
 /* ---------- header ---------- */
 .site-header { position: sticky; top: 0; z-index: 40; background: transparent; border-bottom: 1px solid transparent; transition: border-color .2s, box-shadow .2s; }
-.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(238, 240, 227, .92); backdrop-filter: blur(10px); }
+.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--header-bg); backdrop-filter: blur(10px); }
 .site-header.is-scrolled { border-bottom-color: var(--wash-2); box-shadow: 0 6px 24px -18px rgba(27, 35, 64, .5); }
 .header-inner { height: var(--header-h); width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; display: flex; align-items: center; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
@@ -52,7 +81,7 @@ main { outline: none; min-height: 60vh; }
 .nav-contact:hover { background: var(--ink) !important; color: var(--on-ink); }
 
 .nav-group { position: relative; }
-.nav-panel { position: absolute; top: 100%; left: -14px; width: 290px; padding: 10px; border-radius: 14px; background: #fbfcf5; border: 1px solid var(--wash-2); box-shadow: 0 24px 48px -24px rgba(27, 35, 64, .45); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .15s, transform .15s, visibility .15s; }
+.nav-panel { position: absolute; top: 100%; left: -14px; width: 290px; padding: 10px; border-radius: 14px; background: var(--surface); border: 1px solid var(--wash-2); box-shadow: 0 24px 48px -24px rgba(27, 35, 64, .45); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .15s, transform .15s, visibility .15s; }
 .nav-group:hover .nav-panel, .nav-group:focus-within .nav-panel { opacity: 1; visibility: visible; transform: none; }
 .nav-panel a { display: block; padding: 10px 14px; border-radius: 9px; line-height: 1.5; }
 .nav-panel a:hover { background: var(--wash); }
@@ -96,13 +125,13 @@ main { outline: none; min-height: 60vh; }
 
 /* ---------- palm-leaf strip ---------- */
 .leaf { position: relative; display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 8px 28px; align-items: center; padding: 26px 40px 26px 68px; background:
-    repeating-linear-gradient(180deg, rgba(120, 104, 40, .07) 0 1px, transparent 1px 6px),
-    linear-gradient(90deg, #ebe7bd, var(--leaf) 40%, #ddd9a4);
-  border: 1px solid var(--leaf-edge); border-radius: 10px 26px 26px 10px; color: var(--text); box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 14px 28px -22px rgba(27, 35, 64, .6); transition: transform .2s, box-shadow .2s; }
+    repeating-linear-gradient(180deg, var(--leaf-grain) 0 1px, transparent 1px 6px),
+    linear-gradient(90deg, var(--leaf-light), var(--leaf) 40%, var(--leaf-dark));
+  border: 1px solid var(--leaf-edge); border-radius: 10px 26px 26px 10px; color: var(--text); box-shadow: 0 1px 0 var(--leaf-shine) inset, 0 14px 28px -22px rgba(27, 35, 64, .6); transition: transform .2s, box-shadow .2s; }
 .leaf::before, .leaf::after { content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--wash); box-shadow: inset 0 2px 3px rgba(60, 50, 10, .45); }
 .leaf::before { left: 26px; }
 .leaf::after { right: 26px; }
-.leaf:hover { transform: translateY(-3px); box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 22px 34px -22px rgba(27, 35, 64, .7); }
+.leaf:hover { transform: translateY(-3px); box-shadow: 0 1px 0 var(--leaf-shine) inset, 0 22px 34px -22px rgba(27, 35, 64, .7); }
 .leaf-type { font-size: 14px; font-weight: 600; color: var(--teal); }
 .leaf-main h3 { margin: 0; font-size: 21px; font-weight: 600; line-height: 1.5; }
 .leaf-main p { margin: 4px 0 0; color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 62ch; }
@@ -122,7 +151,7 @@ main { outline: none; min-height: 60vh; }
 .latest-section { padding-block: 32px clamp(56px, 8vw, 96px); }
 
 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.tile { position: relative; display: grid; align-content: start; gap: 2px; padding: 28px 28px 24px; border-radius: 16px; background: #fbfcf5; border: 1px solid var(--wash-2); overflow: hidden; transition: border-color .2s, transform .2s; }
+.tile { position: relative; display: grid; align-content: start; gap: 2px; padding: 28px 28px 24px; border-radius: 16px; background: var(--surface); border: 1px solid var(--wash-2); overflow: hidden; transition: border-color .2s, transform .2s; }
 .tile:hover { border-color: var(--ink); transform: translateY(-2px); }
 .tile-glyph { position: absolute; right: 16px; top: 8px; font-size: 64px; font-weight: 800; line-height: 1.4; color: var(--wash-2); pointer-events: none; transition: color .2s; }
 .tile:hover .tile-glyph { color: var(--leaf); }
@@ -176,12 +205,16 @@ main { outline: none; min-height: 60vh; }
 
 .reader-body { --step: 0; margin-top: 28px; padding-top: 32px; border-top: 1px solid var(--leaf-edge); font-family: var(--read); font-size: calc(18px + var(--step) * 2px); line-height: 2.05; }
 .reader-body p { margin-bottom: 1.1em; overflow-wrap: anywhere; }
-.reader-body h2 { margin: 2.2em 0 .6em; font: 700 calc(22px + var(--step) * 2px) / 1.6 var(--head); color: var(--ink); }
+.reader-body h2 { margin: 2.2em 0 .6em; font: 700 calc(22px + var(--step) * 2px) / 1.6 var(--head); color: var(--heading); }
 .reader-body.is-poem { text-align: center; }
 .reader-body .poem p { margin-bottom: 2em; }
+/* Each poem line is its own block: a line that wraps on a narrow screen stays
+   tight, with a wider gap before the next line, so it still reads as one line. */
+.poem .line { display: block; line-height: 1.7; text-wrap: balance; }
+.poem .line + .line { margin-top: .45em; }
 
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
-.pager a { display: block; padding: 18px 22px; border-radius: 14px; background: #fbfcf5; border: 1px solid var(--wash-2); transition: border-color .2s; }
+.pager a { display: block; padding: 18px 22px; border-radius: 14px; background: var(--surface); border: 1px solid var(--wash-2); transition: border-color .2s; }
 .pager a:hover { border-color: var(--ink); }
 .pager small { display: block; color: var(--muted); font-size: 13px; }
 .pager strong { display: block; font-weight: 600; line-height: 1.6; }
@@ -200,7 +233,7 @@ main { outline: none; min-height: 60vh; }
 .footer-base a:hover { color: #fff; }
 
 /* ---------- search ---------- */
-.search-dialog { width: min(640px, calc(100% - 32px)); max-height: min(560px, 80vh); margin: 10vh auto auto; padding: 0; border: 0; border-radius: 18px; background: #fbfcf5; color: var(--text); box-shadow: 0 40px 100px -20px rgba(27, 35, 64, .6); overflow: hidden; }
+.search-dialog { width: min(640px, calc(100% - 32px)); max-height: min(560px, 80vh); margin: 10vh auto auto; padding: 0; border: 0; border-radius: 18px; background: var(--surface); color: var(--text); box-shadow: 0 40px 100px -20px rgba(27, 35, 64, .6); overflow: hidden; }
 .search-dialog[open] { display: flex; flex-direction: column; }
 .search-dialog::backdrop { background: rgba(27, 35, 64, .55); backdrop-filter: blur(3px); }
 .search-head { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--wash-2); }
@@ -249,6 +282,20 @@ main { outline: none; min-height: 60vh; }
   .brand-text small { display: none; }
   .search-dialog { margin-top: 6vh; }
   .hero-leaf { position: relative !important; left: auto; bottom: auto; width: auto; margin: -28px 12px 0; }
+  .reader-body.is-poem { font-size: calc(17px + var(--step) * 2px); }
+}
+
+/* Night reading: pieces that need more than the colour tokens above */
+@media (prefers-color-scheme: dark) {
+  .button { background: var(--lamp); color: var(--ink); }
+  .button:hover { background: #ecb343; }
+  .nav-contact { border-color: var(--text); }
+  .nav-contact:hover { background: var(--text) !important; color: var(--wash); }
+  .tabs a[aria-current="page"] { background: var(--lamp); border-color: var(--lamp); color: var(--ink); }
+  .tabs a[aria-current="page"] span { color: var(--ink); }
+  .hero, .about-band, .site-footer { background: #0d1020; }
+  .brand-mark { box-shadow: 0 0 0 1px var(--wash-2); }
+  .skip-link { background: var(--surface); }
 }
 
 @media (prefers-reduced-motion: reduce) {
