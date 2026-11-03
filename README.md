@@ -18,7 +18,7 @@ const works = [
 ];
 ```
 
-Supported types are `கவிதை`, `கதை`, and `கட்டுரை`. Save the file and refresh the page to see changes. Each work gets its own reading page automatically (`#/read/<number>`, numbered in the order of the array). New works appear on the home page, the works list, the category counts and search without any other change. Edit the biography in the `viewAbout` and home-page sections of `app.js`, and update the contact email (`EMAIL` in `app.js`, plus the links in `index.html`) before publishing.
+Supported types are `கவிதை`, `கதை`, and `கட்டுரை`. Save the file and refresh the page to see changes. Each work gets its own reading page automatically (`#/read/<number>`, numbered in the order of the array, so always add new works at the end). An optional `rank` number sets the order on the works pages and the previous/next links (1 shows first); works without a rank come after the ranked ones, newest first. The home page's latest section still shows the last three works added. New works appear on the home page, the works list, the category counts and search without any other change. Edit the biography in the `viewAbout` and home-page sections of `app.js`, and update the contact email (`EMAIL` in `app.js`, plus the links in `index.html`) before publishing.
 
 ## Preview locally
 

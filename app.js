@@ -14,6 +14,9 @@ const all = (typeof works !== "undefined" ? works : []).map((w, i) => ({
   id: i + 1,
   minutes: Math.max(1, Math.round((w.body || "").split(/\s+/).filter(Boolean).length / 170))
 }));
+// Lists and prev/next follow each work's `rank` (lowest first); unranked works come after, newest first.
+// Reading links (#/read/<n>) still use the position in works.js, so shared links never change.
+const ranked = [...all].sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity) || b.id - a.id);
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -111,7 +114,7 @@ function viewHome() {
 function viewWorks(typeKey) {
   const info = typeInfo(typeKey);
   const valid = !typeKey || info;
-  const list = info ? all.filter((w) => w.type === typeKey) : all;
+  const list = info ? ranked.filter((w) => w.type === typeKey) : ranked;
   const label = info ? info.plural : "படைப்புகள்";
   const crumbs = info
     ? `<a href="#/">முகப்பு</a><a href="#/works">படைப்புகள்</a><span aria-current="page">${esc(info.plural)}</span>`
@@ -156,9 +159,9 @@ function renderBody(w) {
 function viewRead(id) {
   const w = all.find((x) => x.id === Number(id));
   if (!w) return viewNotFound();
-  const idx = all.indexOf(w);
-  const prev = all[idx - 1];
-  const next = all[idx + 1];
+  const idx = ranked.indexOf(w);
+  const prev = ranked[idx - 1];
+  const next = ranked[idx + 1];
   const info = typeInfo(w.type);
   return {
     title: `${w.title} — ${SITE}`,
