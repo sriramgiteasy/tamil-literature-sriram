@@ -73,7 +73,7 @@ function viewHome() {
         </div>
       </div>
       <figure class="hero-art">
-        <img src="assets/writer-at-work.png" alt="புத்தகங்கள் நிறைந்த அறையில் எழுதிக்கொண்டிருக்கும் எழுத்தாளர்" width="1024" height="674">
+        <img src="assets/writer-thinker.jpg" alt="புத்தகங்கள் நிறைந்த அறையில் எழுதிக்கொண்டிருக்கும் எழுத்தாளர்" width="670" height="550">
         ${featured ? `<a class="hero-leaf leaf" href="${readHref(featured)}"><span class="leaf-type">புதியது</span><span class="leaf-main"><h3>${esc(featured.title)}</h3></span></a>` : ""}
       </figure>
     </section>
@@ -199,7 +199,7 @@ function viewAbout() {
     <div class="wrap">
       ${pageHead("வணக்கம், நான் ஸ்ரீராம்.", "", '<a href="#/">முகப்பு</a><span aria-current="page">எழுத்தாளர்</span>')}
       <div class="about-grid">
-        <figure><img src="assets/writer-at-work.png" alt="எழுத்தாளர் தன் மேசையில்" width="1024" height="674" loading="lazy"></figure>
+        <figure><img src="assets/writer-thinker.jpg" alt="எழுத்தாளர் தன் மேசையில்" width="670" height="550" loading="lazy"></figure>
         <div class="prose">
           <p>தமிழ் மொழியையும் அதன் கதைகளையும் நேசிக்கும் ஒரு வாசகன், எழுத்தாளன். இந்தத் தளத்தில் என் படைப்புகளையும், மனதில் தங்கும் சில எண்ணங்களையும் பகிர்கிறேன்.</p>
           <p>கவிதை, கதை, கட்டுரை என எது எழுதினாலும், முதலில் கவனிப்பதிலிருந்தே தொடங்குகிறது.</p>
