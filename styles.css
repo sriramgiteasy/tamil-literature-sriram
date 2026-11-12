@@ -203,6 +203,8 @@ main { outline: none; min-height: 60vh; }
 .size-ctl button + button { border-left: 1.5px solid var(--leaf-edge); }
 .size-ctl button:hover { background: var(--wash-2); }
 
+.reader-art { margin: 28px 0 0; }
+.reader-art img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--leaf-edge); background: #fff; }
 .reader-body { --step: 0; margin-top: 28px; padding-top: 32px; border-top: 1px solid var(--leaf-edge); font-family: var(--read); font-size: calc(18px + var(--step) * 2px); line-height: 2.05; }
 .reader-body p { margin-bottom: 1.1em; overflow-wrap: anywhere; }
 .reader-body h2 { margin: 2.2em 0 .6em; font: 700 calc(22px + var(--step) * 2px) / 1.6 var(--head); color: var(--heading); }

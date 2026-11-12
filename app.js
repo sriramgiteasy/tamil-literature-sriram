@@ -181,6 +181,7 @@ function viewRead(id) {
           <button type="button" data-size="1" aria-label="எழுத்தைப் பெரிதாக்கு">அ+</button>
         </div>
       </div>
+      ${w.image ? `<figure class="reader-art"><img src="${esc(w.image.src)}" alt="${esc(w.image.alt || "")}"${w.image.width ? ` width="${w.image.width}" height="${w.image.height}"` : ""} decoding="async"></figure>` : ""}
       <div class="reader-body ${w.type === "கவிதை" ? "is-poem" : ""}" id="reader-body">${renderBody(w)}</div>
       <nav class="pager" aria-label="அடுத்த படைப்புகள்">
         ${prev ? `<a class="pager-prev" href="${readHref(prev)}"><small>முந்தையது</small><strong>${esc(prev.title)}</strong></a>` : "<span></span>"}
