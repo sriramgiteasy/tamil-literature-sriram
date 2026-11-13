@@ -1,5 +1,5 @@
 /* Sriram Writes — hash-routed static site. No build step needed.
-   Routes:  #/  ·  #/works  ·  #/works/<type>  ·  #/read/<n>  ·  #/about            */
+   Routes:  #/  ·  #/works  ·  #/works/<type>  ·  /read/<n>/ (or #/read/<n>)  ·  #/about           */
 
 const TYPES = [
   { key: "கவிதை", glyph: "கவி", plural: "கவிதைகள்", note: "சொற்களில் தங்கும் உணர்வுகள்" },
@@ -25,6 +25,10 @@ const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<
 const typeInfo = (key) => TYPES.find((t) => t.key === key);
 const countOf = (key) => all.filter((w) => w.type === key).length;
 const readHref = (w) => `#/read/${w.id}`;
+// Each work also has a real address, /read/<n>/ (built by tools/make-share-pages.js), so a shared
+// link previews with the work's own title and picture. Reading pages show that address in the bar.
+const shareUrl = (id) => `/read/${id}/`;
+const rootPath = (p) => (/^(https?:|\/)/.test(p) ? p : "/" + p);
 const worksHref = (key) => (key ? `#/works/${encodeURIComponent(key)}` : "#/works");
 
 /* ---------- reusable pieces ---------- */
@@ -181,7 +185,7 @@ function viewRead(id) {
           <button type="button" data-size="1" aria-label="எழுத்தைப் பெரிதாக்கு">அ+</button>
         </div>
       </div>
-      ${w.image ? `<figure class="reader-art"><img src="${esc(w.image.src)}" alt="${esc(w.image.alt || "")}"${w.image.width ? ` width="${w.image.width}" height="${w.image.height}"` : ""} decoding="async"></figure>` : ""}
+      ${w.image ? `<figure class="reader-art"><img src="${esc(rootPath(w.image.src))}" alt="${esc(w.image.alt || "")}"${w.image.width ? ` width="${w.image.width}" height="${w.image.height}"` : ""} decoding="async"></figure>` : ""}
       <div class="reader-body ${w.type === "கவிதை" ? "is-poem" : ""}" id="reader-body">${renderBody(w)}</div>
       <nav class="pager" aria-label="அடுத்த படைப்புகள்">
         ${prev ? `<a class="pager-prev" href="${readHref(prev)}"><small>முந்தையது</small><strong>${esc(prev.title)}</strong></a>` : "<span></span>"}
@@ -226,6 +230,8 @@ const progress = $("#read-progress");
 let firstRender = true;
 
 function parseRoute() {
+  const shared = location.pathname.match(/^\/read\/(\d+)\/?$/);
+  if (shared && location.hash.length <= 1) return { name: "read", arg: shared[1] };
   const raw = location.hash.replace(/^#\/?/, "");
   const [name, ...rest] = raw.split("/").filter((s) => s !== "");
   const arg = rest.length ? decodeURIComponent(rest.join("/")) : "";
@@ -242,6 +248,12 @@ function render() {
   else if (name === "about") view = viewAbout();
   else view = viewNotFound();
 
+  // Show /read/<n>/ while reading a work (so copying the address shares a proper preview); "/#/…" elsewhere.
+  const want = name === "read" && view.reading ? shareUrl(Number(arg)) : "/" + (location.hash || "");
+  if (location.pathname + location.hash !== want) {
+    try { history.replaceState(null, "", want); } catch (e) { /* not allowed (e.g. file://) */ }
+  }
+
   main.innerHTML = view.html;
   main.classList.toggle("is-reading", !!view.reading);
   document.title = view.title;
@@ -257,7 +269,16 @@ function render() {
   updateProgress();
 }
 
-window.addEventListener("hashchange", render);
+// Back/forward between two /read/<n>/ addresses changes no hash, so listen for popstate too.
+// A hash link fires both events; render only once per address.
+let lastAddress = "";
+const onNavigate = () => {
+  if (location.pathname + location.hash === lastAddress) return;
+  render();
+  lastAddress = location.pathname + location.hash;
+};
+window.addEventListener("hashchange", onNavigate);
+window.addEventListener("popstate", onNavigate);
 
 /* ---------- reading size + progress ---------- */
 
@@ -359,3 +380,4 @@ document.addEventListener("keydown", (e) => {
 
 $("#year").textContent = new Date().getFullYear();
 render();
+lastAddress = location.pathname + location.hash;
