@@ -1,6 +1,6 @@
 # Sriram Writes
 
-A small, static Tamil literature site. It runs without a paid server and is ready to publish with Azure Static Web Apps.
+A small, static Tamil literature site. It runs without a paid server and is published free with GitHub Pages.
 
 ## Add your writing
 
@@ -24,11 +24,12 @@ Supported types are `கவிதை`, `கதை`, and `கட்டுரை`.
 
 Open `index.html` in a browser (the site uses hash routes, so no server setup is needed). The site uses Google Fonts when internet access is available and falls back to system fonts if it isn't.
 
-## Publish with Azure Static Web Apps
+## Publish with GitHub Pages
 
-1. Put these files in a GitHub repository.
-2. In the Azure portal, create a **Static Web App** and connect the repository. Choose the `Custom` build preset; set app location to `/`, API location empty, and output location empty.
-3. Once deployment is complete, open the Static Web App's **Custom domains** page and add `sriramwrites.in`.
-4. Azure will show the DNS record(s) to create. In your domain registrar's DNS settings, add those exact records. DNS verification can take some time. Azure provisions HTTPS after the domain is verified.
+The site is served by GitHub Pages from the root of the `main` branch (repository **Settings → Pages**: "Deploy from a branch", `main`, `/ (root)`). Every push to `main` goes live within a minute or two.
 
-The domain registration is separate from hosting. You do not need to buy Azure App Service for this static site.
+- Custom domain: `www.sriramwrites.in`, recorded in the `CNAME` file. Keep that file.
+- DNS (GoDaddy): a `CNAME` record for `www` pointing to `sriramgiteasy.github.io`; the bare `sriramwrites.in` is forwarded to `www`.
+- HTTPS: **Enforce HTTPS** is ticked in Settings → Pages.
+
+The site was hosted on Azure Static Web Apps until November 2026, when the free credit ran out.
